@@ -25,7 +25,9 @@ var tmpdir = fs.mkdtempSync(path.join(app.getPath('temp'), 'electron-mocha-'))
 app.setPath('userData', tmpdir)
 
 app.on('quit', () => {
-  fs.removeSync(tmpdir)
+  setTimeout(() => {
+    fs.removeSync(tmpdir);
+  }, 0);
 })
 
 // do not quit if tests open and close windows
